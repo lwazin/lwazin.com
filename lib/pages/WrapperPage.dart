@@ -10,6 +10,9 @@ class WrapperPage extends StatefulWidget {
 
 class _WrapperPageState extends State<WrapperPage> {
   bool logoOn = false;
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController commentController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -102,18 +105,142 @@ class _WrapperPageState extends State<WrapperPage> {
                   ),
                 ),
                 Center(
-                  child: AnimatedContainer(
-                    width: 300,
-                    duration: Duration(milliseconds: 200),
-                    child: TextField(
-                      decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.blueAccent,
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 30.0),
+                    child: AnimatedOpacity(
+                      duration: Duration(milliseconds: 200),
+                      opacity: 1.0,
+                      // (settings.dialog) ? 1.0 : 0.0,
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(10),
+                                bottomLeft: Radius.circular(10),
+                                bottomRight: Radius.circular(10),
+                              ),
+                              child: BackdropFilter(
+                                filter:
+                                    ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+                                child: AnimatedContainer(
+                                  duration: Duration(
+                                    milliseconds: 200,
+                                  ),
+                                  // (settings.dialog) ? 50 : 200,),
+                                  width: 400,
+                                  // (settings.dialog) ? 400 : 0,
+                                  height: 184,
+                                  color: Colors.black54,
+                                  child: Container(
+                                    width: 215,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(20.0),
+                                      child: Column(
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Container(
+                                                width: 156,
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.only(
+                                                    topRight:
+                                                        Radius.circular(00),
+                                                  ),
+                                                  child: TextFormField(
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontWeight:
+                                                            FontWeight.w500),
+                                                    controller: nameController,
+                                                    onChanged: (value) {},
+                                                    autocorrect: true,
+                                                    maxLines: 1,
+                                                    decoration: InputDecoration(
+                                                      border: InputBorder.none,
+                                                      fillColor: Colors.black45,
+                                                      filled: true,
+                                                      hintText: 'First name..',
+                                                      hintStyle: TextStyle(
+                                                        color: Colors.grey,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 4,
+                                              ),
+                                              Container(
+                                                width: 200,
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.only(
+                                                    topRight:
+                                                        Radius.circular(10),
+                                                  ),
+                                                  child: TextFormField(
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontWeight:
+                                                            FontWeight.w500),
+                                                    controller: emailController,
+                                                    onChanged: (value) {},
+                                                    autocorrect: true,
+                                                    maxLines: 1,
+                                                    decoration: InputDecoration(
+                                                      border: InputBorder.none,
+                                                      fillColor: Colors.black45,
+                                                      filled: true,
+                                                      hintText: 'Email..',
+                                                      hintStyle: TextStyle(
+                                                        color: Colors.grey,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            height: 4,
+                                          ),
+                                          ClipRRect(
+                                            borderRadius: BorderRadius.only(
+                                              bottomRight: Radius.circular(10),
+                                              bottomLeft: Radius.circular(10),
+                                            ),
+                                            child: TextFormField(
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.w500),
+                                              controller: commentController,
+                                              onChanged: (value) {},
+                                              autocorrect: true,
+                                              maxLines: 4,
+                                              decoration: InputDecoration(
+                                                border: InputBorder.none,
+                                                fillColor: Colors.black45,
+                                                filled: true,
+                                                hintText:
+                                                    'Any new ideas? What\'s on your mind?',
+                                                hintStyle: TextStyle(
+                                                  color: Colors.grey,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
                           ),
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        hintText: "Enabled decoration text ...",
+                        ],
                       ),
                     ),
                   ),
